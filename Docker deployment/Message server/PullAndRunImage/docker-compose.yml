@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  mqtt-broker:
+    image: ghoti165/mqtt-broker:latest
+    ports:
+      - "6000:1883"
+
+  publisher:
+    image: ghoti165/publisher:latest
+    depends_on:
+      - mqtt-broker
+
+  subscriber:
+    image: ghoti165/subscriber:latest
+    depends_on:
+      - mqtt-broker

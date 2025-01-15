@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  mqtt-broker:
+    build:
+      context: ./broker
+      dockerfile: Dockerfile
+    image: ghoti165/mqtt-broker:latest
+    platform: linux/arm/v7
+    ports:
+      - "1883:1883"
+
+  mqtt-broker-15:
+    build:
+      context: ./broker/ras15
+      dockerfile: Dockerfile
+    image: ghoti165/mqtt-broker-15:latest
+    platform: linux/arm/v7
+    ports:
+      - "1883:1883"
+
+  publisher:
+    build:
+      context: ./publisher
+      dockerfile: Dockerfile
+    image: ghoti165/publisher:latest
+    platform: linux/arm/v7
+    depends_on:
+      - mqtt-broker
+
+  subscriber:
+    build:
+      context: ./subscriber
+      dockerfile: Dockerfile
+    image: ghoti165/subscriber:latest
+    platform: linux/arm/v7
+    depends_on:
+      - mqtt-broker
