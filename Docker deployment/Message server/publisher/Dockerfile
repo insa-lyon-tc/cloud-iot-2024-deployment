@@ -11,12 +11,9 @@ RUN apt-get update && \
 WORKDIR /app
 
 # 将发布者代码复制到镜像中
-COPY PubContinue.py /app/PubContinue.py
-# COPY publisher.py /app/publisher.py
-# COPY test_1.mp3 /app/test_1.mp3
+COPY Publisher.py /app/Publisher.py
 
 EXPOSE 1884
 
 # 运行发布者脚本
-CMD ["python3", "/app/PubContinue.py"]
-# CMD ["sh", "-c", "python3 /app/PubContinue.py"]
+CMD ["python3", "/app/Publisher.py"]

@@ -10,8 +10,7 @@ RUN apt-get update && apt-get install -y python3-pip && \
 WORKDIR /app
 
 # 将订阅者代码复制到镜像中
-COPY Sub1.py /app/Sub1.py
-# COPY subcriber.py /app/subcriber.py
+COPY Subcriber.py /app/Subcriber.py
 
 # 运行订阅者脚本
-CMD ["python3", "/app/Sub1.py"]
+CMD ["python3", "/app/Subcriber.py"]
